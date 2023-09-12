@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Back Ad Generator</title>
+    <style>
+        /* Add CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Back Ad Generator</h1>
+    <form id="madLibsForm">
+        <label for="occupation">Enter an occupation:</label>
+        <input type="text" id="occupation" required>
+        <br>
+        <label for="pasttime">Enter a ridiculous past-time, ending in -er:</label>
+        <input type="text" id="pasttime" required>
+        <br>
+        <label for="name">Enter a person's name:</label>
+        <input type="text" id="name" required>
+        <br>
+        <label for="booktitle">Make up a book title:</label>
+        <input type="text" id="booktitle" required>
+        <br>
+        <label for="adjective">Enter an adjective:</label>
+        <input type="text" id="adjective" required>
+        <br>
+        <label for="collegemajor">Enter a college major:</label>
+        <input type="text" id="collegemajor" required>
+        <br>
+        <label for="popculturephenomenon">Enter a pop culture phenomenon:</label>
+        <input type="text" id="popculturephenomenon" required>
+        <br>
+        <br>
+        <!-- Add more input fields for other word types -->
+        <button type="button" id="generateButton">Generate Back Ad</button>
+    </form>
+    <div id="story"></div>
+
+    <script>
+        const generateButton = document.getElementById('generateButton');
+        generateButton.addEventListener('click', () => {
+            const occupationInput = document.getElementById('occupation');
+            const pasttime = document.getElementById('pasttime').value;
+            
+            // Capitalize the first letter of the occupation
+            const occupation = occupationInput.value.charAt(0).toUpperCase() + occupationInput.value.slice(1);
+            
+            // Uppercase the entire booktitle
+            const booktitle = document.getElementById('booktitle').value.toUpperCase();
+            
+            const adjective = document.getElementById('adjective').value;
+            const collegemajor = document.getElementById('collegemajor').value;
+            const popculturephenomenon = document.getElementById('popculturephenomenon').value;
+            
+            // Get the name input, split into words, capitalize each word's first letter, and join back
+            const nameInput = document.getElementById('name');
+            const nameWords = nameInput.value.split(' ');
+            const nameCapitalized = nameWords.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            
+            // Get values from other input fields for other word types
+            const story = `${occupation} and ${pasttime} ${nameCapitalized}, acclaimed author of ${booktitle}, returns with an astonishingly ${adjective} meditation on the intersection where ${collegemajor} and ${popculturephenomenon} meet.`; 
+            document.getElementById('story').textContent = story;
+        });
+    </script>
+</body>
+</html>
